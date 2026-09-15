@@ -1,0 +1,26 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "User Books" %>
+
+<h1>User Books</h1>
+
+<table>
+  <tr>
+    <th>Username</th>
+    <th>Book Title</th>
+    <th colspan="3"></th>
+  </tr>
+  <% @user_books.each do |user_book| %>
+    <tr>
+      <td><%= user_book.user.username %></td>
+      <td><%= user_book.book.title %></td>
+      <td><%= link_to "Show", user_book %></td>
+      <td><%= link_to "Edit", edit_user_book_path(user_book) %></td>
+      <td><%= button_to "Delete", user_book, method: :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New User Book", new_user_book_path %></p>
+<p><%= link_to "Book index", books_path %></p>
+<p><%= link_to "User index", users_path %></p>
