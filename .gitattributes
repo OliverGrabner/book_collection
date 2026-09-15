@@ -7,3 +7,6 @@ db/schema.rb linguist-generated
 vendor/* linguist-vendored
 config/credentials/*.yml.enc diff=rails_credentials
 config/credentials.yml.enc diff=rails_credentials
+
+# This app runs in Docker and on Heroku, so keep LF endings in the working tree.
+* text=auto eol=lf
