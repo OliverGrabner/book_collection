@@ -16,6 +16,8 @@ gem "turbo-rails"
 gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
+# XML parsing, required by some CI/analysis tooling [https://github.com/ruby/rexml]
+gem "rexml"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
@@ -49,6 +51,15 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  # RSpec test framework for Rails [https://github.com/rspec/rspec-rails]
+  gem "rspec-rails"
+
+  # Style enforcement, run directly in CI [https://rubocop.org]
+  gem "rubocop", require: false
+
+  # Code coverage reporting, consumed by the CI coverage artifact [https://github.com/simplecov-ruby/simplecov]
+  gem "simplecov", require: false
 end
 
 group :development do

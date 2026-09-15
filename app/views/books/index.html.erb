@@ -1,0 +1,14 @@
+<% content_for :title, "Book Collection" %>
+<h1>Book Collection</h1>
+<p role="status" style="color: green"><%= notice %></p>
+<p><%= link_to "Add a book", new_book_path %></p>
+<div id="books">
+  <% @books.each do |book| %>
+    <%= render book %>
+    <p>
+      <%= link_to "Show details", book_path(book) %> |
+      <%= link_to "Update book", edit_book_path(book) %> |
+      <%= link_to "Delete book", delete_book_path(book) %>
+    </p>
+  <% end %>
+</div>

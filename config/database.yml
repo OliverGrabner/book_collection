@@ -81,21 +81,13 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
+# A single database. On Heroku the DATABASE_URL config var overrides the
+# host, username, password and database name below.
 production:
-  primary: &primary_production
-    <<: *default
-    database: test_app_production
-    username: test_app
-    password: <%= ENV["TEST_APP_DATABASE_PASSWORD"] %>
-  cache:
-    <<: *primary_production
-    database: test_app_production_cache
-    migrations_paths: db/cache_migrate
-  queue:
-    <<: *primary_production
-    database: test_app_production_queue
-    migrations_paths: db/queue_migrate
-  cable:
-    <<: *primary_production
-    database: test_app_production_cable
-    migrations_paths: db/cable_migrate
+  <<: *default
+  database: test_app_production
+
+# Used by Heroku Review Apps, which run with RAILS_ENV=review (see app.json).
+review:
+  <<: *default
+  database: test_app_review
