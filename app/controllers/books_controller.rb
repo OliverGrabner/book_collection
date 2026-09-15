@@ -28,7 +28,10 @@ class BooksController < ApplicationController
         format.html { redirect_to books_path, notice: "Book was successfully created." }
         format.json { render :show, status: :created, location: @book }
       else
-        format.html { render :new, status: :unprocessable_content }
+        format.html do
+          flash.now[:alert] = "Title is required."
+          render :new, status: :unprocessable_content
+        end
         format.json { render json: @book.errors, status: :unprocessable_content }
       end
     end
@@ -69,6 +72,6 @@ class BooksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def book_params
-      params.expect(book: [ :title ])
+      params.expect(book: [ :title, :author, :price, :published_date ])
     end
 end
